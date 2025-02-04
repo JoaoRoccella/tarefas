@@ -4,8 +4,8 @@
         {"id": 2, "codigo": "2DSI SESI (2024-2025)"}
     ],
     "professores": [
-        {"id": 1, "nome": "João Marcos"},
-        {"id": 2, "nome": "Edgard Lemos"}
+        {"id": 1, "nome": "João Marcos Roccella Alves"},
+        {"id": 2, "nome": "Edgard de Souza Lemos Junior"}
     ],
     "tarefas": [
         {"id": 1, "titulo": "Tarefa 1", "descricao": "Descrição da tarefa 1", "dataEntrega": "2025-02-10", "turmaId": 1, "professorId": 1},
