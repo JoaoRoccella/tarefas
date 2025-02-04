@@ -25,12 +25,31 @@ async function loadData() {
 
 // Popula o dropdown de turmas
 function populateTurmas() {
-    turmaSelect.innerHTML = '<option value="">-- Escolha a turma --</option>';
+    turmaSelect.innerHTML = '<option value="">-- Escolha a turma --</option>'; // Adiciona o valor padrão
+
+    // Itera pelas turmas no JSON e cria as opções
     data.turmas.forEach((turma) => {
         const option = document.createElement("option");
         option.value = turma.id;
         option.textContent = turma.codigo;
         turmaSelect.appendChild(option);
+    });
+
+    // Adiciona o evento para reiniciar os seletores quando a turma for alterada
+    turmaSelect.addEventListener("change", () => {
+        const turmaId = turmaSelect.value;
+
+        // Reinicia os demais seletores
+        professorSelect.innerHTML = '<option value="">-- Escolha o professor --</option>';
+        tarefaSelect.innerHTML = '<option value="">-- Escolha a tarefa --</option>';
+        professorSelect.disabled = true;
+        tarefaSelect.disabled = true;
+        fileInput.disabled = true;
+        uploadButton.disabled = true;
+
+        if (turmaId) {
+            updateProfessores(turmaId);
+        }
     });
 }
 
@@ -49,6 +68,17 @@ function updateProfessores(turmaId) {
         option.textContent = prof.nome;
         professorSelect.appendChild(option);
     });
+
+    // Reinicia as tarefas ao alterar o professor
+    professorSelect.addEventListener("change", () => {
+        const professorId = professorSelect.value;
+        if (turmaId && professorId) {
+            updateTarefas(turmaId, professorId);
+        } else {
+            tarefaSelect.innerHTML = '<option value="">-- Escolha a tarefa --</option>';
+            tarefaSelect.disabled = true;
+        }
+    });
 }
 
 // Atualiza as tarefas com base na turma e no professor
@@ -66,41 +96,40 @@ function updateTarefas(turmaId, professorId) {
         option.textContent = `${tarefa.titulo} - ${tarefa.descricao}`;
         tarefaSelect.appendChild(option);
     });
+
+    // Habilita o botão de upload quando uma tarefa é selecionada
+    tarefaSelect.addEventListener("change", () => {
+        if (tarefaSelect.value) {
+            fileInput.disabled = false;
+            uploadButton.disabled = false;
+        } else {
+            fileInput.disabled = true;
+            uploadButton.disabled = true;
+        }
+    });
 }
 
-// Habilita o botão de upload quando uma tarefa é selecionada
-tarefaSelect.addEventListener("change", () => {
-    if (tarefaSelect.value) {
-        fileInput.disabled = false;
-        uploadButton.disabled = false;
-    } else {
-        fileInput.disabled = true;
-        uploadButton.disabled = true;
-    }
+// Atualiza os arquivos selecionados no input
+fileInput.addEventListener("change", () => {
+    const files = fileInput.files;
+    const fileNames = Array.from(files).map((file) => file.name).join(", ");
+    statusMessage.textContent = `Arquivos anexados: ${fileNames}`;
+    statusMessage.style.color = "blue"; // Exibe a mensagem em azul
 });
 
-// Eventos de seleção
-turmaSelect.addEventListener("change", () => {
-    const turmaId = turmaSelect.value;
-    if (turmaId) {
-        updateProfessores(turmaId);
-    } else {
-        professorSelect.disabled = true;
-        tarefaSelect.disabled = true;
-        fileInput.disabled = true;
-        uploadButton.disabled = true;
-    }
-});
-
-professorSelect.addEventListener("change", () => {
+// Evento para o botão de upload
+uploadButton.addEventListener("click", (event) => {
+    event.preventDefault(); // Evita o comportamento padrão do botão
     const turmaId = turmaSelect.value;
     const professorId = professorSelect.value;
-    if (turmaId && professorId) {
-        updateTarefas(turmaId, professorId);
+    const tarefaId = tarefaSelect.value;
+
+    if (turmaId && professorId && tarefaId && fileInput.files.length > 0) {
+        statusMessage.textContent = "Upload realizado com sucesso!";
+        statusMessage.style.color = "green"; // Exibe a mensagem em verde
     } else {
-        tarefaSelect.disabled = true;
-        fileInput.disabled = true;
-        uploadButton.disabled = true;
+        statusMessage.textContent = "Por favor, preencha todos os campos e selecione pelo menos um arquivo.";
+        statusMessage.style.color = "red"; // Exibe a mensagem em vermelho
     }
 });
 

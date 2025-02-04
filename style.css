@@ -38,6 +38,7 @@ label[for="file-input"] {
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
+    margin: 10px 0 20px;
 }
 
 #file-names {

@@ -10,6 +10,8 @@
     "tarefas": [
         {"id": 1, "titulo": "Tarefa 1", "descricao": "Descrição da tarefa 1", "dataEntrega": "2025-02-10", "turmaId": 1, "professorId": 1},
         {"id": 2, "titulo": "Tarefa 2", "descricao": "Descrição da tarefa 2", "dataEntrega": "2025-02-10", "turmaId": 1, "professorId": 1},
-        {"id": 3, "titulo": "Tarefa 3", "descricao": "Descrição da tarefa 3", "dataEntrega": "2025-02-10", "turmaId": 2, "professorId": 2}
+        {"id": 3, "titulo": "Tarefa 3", "descricao": "Descrição da tarefa 3", "dataEntrega": "2025-02-10", "turmaId": 1, "professorId": 2},
+        {"id": 4, "titulo": "Tarefa 4", "descricao": "Descrição da tarefa 4", "dataEntrega": "2025-02-10", "turmaId": 2, "professorId": 1},
+        {"id": 5, "titulo": "Tarefa 5", "descricao": "Descrição da tarefa 5", "dataEntrega": "2025-02-10", "turmaId": 2, "professorId": 2}
     ]
 }
