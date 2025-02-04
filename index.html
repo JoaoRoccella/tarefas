@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Upload Hierárquico</title>
+</head>
+
+<body>
+    <h1>Envio de Arquivos</h1>
+
+    <!-- Seleção da Turma -->
+    <label for="turma">Selecione a turma:</label>
+    <select id="turma">
+        <option value="">-- Escolha a turma --</option>
+    </select>
+
+    <!-- Seleção do Professor -->
+    <label for="professor">Selecione o professor:</label>
+    <select id="professor" disabled>
+        <option value="">-- Escolha o professor --</option>
+    </select>
+
+    <!-- Seleção da Tarefa -->
+    <label for="tarefa">Selecione a tarefa:</label>
+    <select id="tarefa" disabled>
+        <option value="">-- Escolha a tarefa --</option>
+    </select>
+
+    <!-- Upload de Arquivos -->
+    <label for="file-input">Selecione os arquivos:</label>
+    <input type="file" id="file-input" multiple disabled>
+    <button id="upload-button" disabled>Fazer Upload</button>
+
+    <p id="status-message"></p>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

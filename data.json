@@ -1,0 +1,15 @@
+{
+    "turmas": [
+        {"id": 1, "codigo": "1DSI SESI (2025-2026)"},
+        {"id": 2, "codigo": "2DSI SESI (2024-2025)"}
+    ],
+    "professores": [
+        {"id": 1, "nome": "João Marcos"},
+        {"id": 2, "nome": "Edgard Lemos"}
+    ],
+    "tarefas": [
+        {"id": 1, "titulo": "Tarefa 1", "descricao": "Descrição da tarefa 1", "dataEntrega": "2025-02-10", "turmaId": 1, "professorId": 1},
+        {"id": 2, "titulo": "Tarefa 2", "descricao": "Descrição da tarefa 2", "dataEntrega": "2025-02-10", "turmaId": 1, "professorId": 1},
+        {"id": 3, "titulo": "Tarefa 3", "descricao": "Descrição da tarefa 3", "dataEntrega": "2025-02-10", "turmaId": 2, "professorId": 2}
+    ]
+}
